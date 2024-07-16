@@ -47,8 +47,8 @@ class Queue():
     def isEmpty(self):
         return self.items == []
 
-def decodemsg():
-        pass
+def decodemsg(string, number):
+    return [e for e in string.items if e.isalpha()]
 
 def encodemsg(string, number):
     lst = []
@@ -74,12 +74,10 @@ def encodemsg(string, number):
     # chr(ord('S') + 1)
     # 'T'
 
-string, number = input("Enter string and Code : ").split(",")
+string, number = input("Enter String and Code : ").split(",")
 
 q1 = Queue(string)
 q2 = Queue(number)
 
-print(encodemsg(q1, q2))
-# decodemsg(q1, q2)
-
-# c = Cipher()
+print(f"Encode message is :  {encodemsg(q1, q2)}")
+print(f"Decode message is :  {decodemsg(q1, q2)}")
