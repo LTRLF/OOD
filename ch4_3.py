@@ -56,9 +56,15 @@ def encodemsg(string, number):
     for i in range(len(string.items)):
         #check ว่า string.items ที่รับมาอยู่ในช่วงที่กำหนดหรือไม่
         if 'a' <= string.items[i] <= 'z' or 'A' <= string.items[i] <= 'Z':
+            new_str = ord(string.items[i])
             if num > (len(number.items)-1):
                 num = 0
-            lst.append(chr(ord(string.items[i]) + int(number.items[num])))
+            #ถ้าค่าตอนแรกน้อยกว่า Z (อยู่ในช่วงของตัวใหญ่ ทำเพื่อเช็คเคสตัวใหญ่) และ บวกแล้วเกิน Z หรือ ค่าเดิมบวกแล้วเกินค่า z (ค่าตัวเล็ก)
+            if (new_str <= ord('Z') and new_str + int(number.items[num]) > ord('Z')) or (new_str + int(number.items[num]) > ord('z')):
+                # print(f"old: {chr(new_str)}")
+                new_str -= 26  
+                # print(f"new: {chr(new_str)}")
+            lst.append(chr(new_str + int(number.items[num])))
             num+=1
     return lst
     # chr(65)
