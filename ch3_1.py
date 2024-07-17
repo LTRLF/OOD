@@ -50,7 +50,6 @@ Enter data to stack : K M I T L C E 2 5 6 3
 class Stack():
     def __init__(self):    # ใช้สำหรับสร้าง list ว่าง
         self.items = []
-        #self.size = 0
 
     def push(self, i):       # เก็บข้อมูลลง stack
         self.items.append(i)
