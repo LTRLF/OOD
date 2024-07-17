@@ -2,11 +2,16 @@
 #แยกให้ "1234" เป็น [1, 2, 3, 4]
 # print([int(e) for e in list(number)])
 
-class Queue():
-    pass
+# class Queue():
+#     pass
 
-    def string(self):
-        print(1)
+#     def string(self):
+#         print(1)
 
-# q = Queue()
-Queue().string()
+# # q = Queue()
+# Queue().string()
+
+
+lst = [[1, 2], [3, 4]]
+old = lst[0]
+print(old[1])
