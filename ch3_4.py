@@ -48,6 +48,7 @@ for i in x:
 
 s = Stack()
 
-for i in new_x:
-    if i == 'A':
-        
+for i in range(len(new_x)):
+    if new_x[i] == 'A':
+        s.push(int(new_x[i+1]))
+print(s.items)
