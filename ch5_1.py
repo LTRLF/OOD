@@ -22,7 +22,18 @@ class Node():
 
 class List():
     def __init__(self):
-        self.head = None
+        self.head = Node()
+        self.size = 0
+
+    def __str__(self):
+        if self.isEmpty():
+            return 'Empty'
+        cur = self.head
+        s = ''
+        for i in range(self.size):
+            s += str(cur.next.data) + ' '
+            cur = cur.next
+        return s
 
     def append(self, data):
         inp = Node(data, None)              
@@ -30,24 +41,36 @@ class List():
         while cur.next != None:
             cur = cur.next  
         cur.next = inp
+        self.size += 1
         
     def delete(self, data):
         inp = self.head
         while inp.next != None:
             if inp.next == data:
                 inp.next = inp.next.next
+        self.size -= 1
                      
     def isEmpty(self):
          return self.head.next == None
 
 
 x = [int(e) for e in input("Enter Input : ").split()]
-print("Linked list now is ", end='')
-[print(e, end=' ') for e in x]
-print(end="\n")
+# print("Linked list now is ", end='')
+# [print(e, end=' ') for e in x]
+# print(end="\n")
 
-n = Node()
 lst = List()
 
+for i in x:
+    lst.append(i)
 
-print(f"there are", 0, "duplicates that been remove")
+for i in range(len(x)):
+    for j in range(i, len(x)):
+        if x[j] == x[i]:
+            lst.delete(x[j])
+            
+print(lst)
+
+
+
+# print(f"there are", 0, "duplicates that been remove")
