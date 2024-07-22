@@ -30,7 +30,8 @@ class Stack():
         self.items.append(i)
 
     def pop(self):
-        return self.items.pop()
+        if not self.isEmpty():
+            self.items.pop()
 
     def isEmpty(self):
         return self.items == []
@@ -50,5 +51,11 @@ s = Stack()
 
 for i in range(len(new_x)):
     if new_x[i] == 'A':
-        s.push(int(new_x[i+1]))
-print(s.items)
+        while not s.isEmpty() and s.items[-1] <= int(new_x[i+1]):
+            s.pop()
+        if s.isEmpty() or s.items[-1] > int(new_x[i+1]):
+            s.push(int(new_x[i+1]))
+            # print(s.items)
+
+    if new_x[i] == 'B':
+        print(s.size())
