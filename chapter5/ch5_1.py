@@ -65,7 +65,7 @@ for i in x:
     lst.append(i)
 
 for i in range(len(x)):
-    for j in range(i, len(x)):
+    for j in range(i+1, len(x)):
         if x[j] == x[i]:
             lst.delete(x[j])
             
