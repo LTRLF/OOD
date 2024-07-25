@@ -52,24 +52,54 @@ class List():
                      
     def isEmpty(self):
          return self.head.next == None
+    
+    def dup(self):
+        count = 0
+        #cur ชี้ตัวแรก
+        cur = self.head
+        #ถ้าตัวแรกและตัวต่อไปไม่เป็นค่าว่าง
+        while cur and cur.next != None:
+            #สร้าง post ขึ้นมาไล่เช็คจากตัวแรกสุด
+            post = self.head
+            found = False
+            #ถ้าpost ยังวิ่งไปไม่ถึง cur.next (check ที่ object)
+            while post is not cur.next:
+                #check data
+                if post.data == cur.next.data:
+                    #ให้ cur.next ชี้ไปที่ตัวถัดไป
+                    cur.next = cur.next.next
+                    count+=1
+                    self.size -=1
+                    #ดักว่าถ้าเจอตัวซ้ำไม่ให้ cur วิ่งต่อ
+                    found = True
+                #ให้ post วิ่งต่อ
+                post = post.next
+            #ถ้าไม่เจอให้วิ่งต่อ
+            if not found:     
+                cur = cur.next
+        #เอาค่าออกมาแสดงทีหลัง
+        return count
 
 
 x = [int(e) for e in input("Enter Input : ").split()]
-# print("Linked list now is ", end='')
-# [print(e, end=' ') for e in x]
-# print(end="\n")
+print("Linked list now is ", end='')
+[print(e, end=' ') for e in x]
+print(end="\n")
 
 lst = List()
 
 for i in x:
     lst.append(i)
 
-for i in range(len(x)):
-    for j in range(i+1, len(x)):
-        if x[j] == x[i]:
-            lst.delete(x[j])
+# for i in range(len(x)):
+#     for j in range(i+1, len(x)):
+#         if x[j] == x[i]:
+#             lst.delete(x[j])
+#             # count +=1
+
+print(f"there are {lst.dup()} duplicates that been remove")
             
-print(lst)
+print("Remove duplicates Linked list", lst)
 
 
 
